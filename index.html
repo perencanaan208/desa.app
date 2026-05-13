@@ -370,15 +370,23 @@ header{
     </div>
 
     <div class="form-group">
-        <label>Sumber Dana</label>
-        <select>
-            <option>Dana Desa</option>
-            <option>ADD</option>
-            <option>Bankeu Prov</option>
-            <option>Bankeu Kab</option>
-            <option>Input Manual</option>
-        </select>
-    </div>
+    <label>Sumber Dana</label>
+
+    <select id="sumberDana" onchange="cekSumberDana()">
+        <option>Dana Desa</option>
+        <option>ADD</option>
+        <option>Bankeu Prov</option>
+        <option>Bankeu Kab</option>
+        <option value="manual">Input Manual</option>
+    </select>
+
+    <input 
+        type="text"
+        id="manualDana"
+        placeholder="Masukkan sumber dana"
+        style="display:none; margin-top:10px;"
+    >
+</div>
 
     <div class="form-group">
         <label>Jumlah Pagu Kegiatan</label>
@@ -543,6 +551,18 @@ header{
     }
   });
 </script>
+function cekSumberDana() {
+    const sumberDana = document.getElementById("sumberDana").value;
+    const manualInput = document.getElementById("manualDana");
+
+    if (sumberDana === "manual") {
+        manualInput.style.display = "block";
+    } else {
+        manualInput.style.display = "none";
+    }
+}
+</script>
+
 
 </body>
 </html>
